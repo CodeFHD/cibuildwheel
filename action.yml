@@ -34,7 +34,9 @@ runs:
     - id: cibw
       run: |
         # Install cibuildwheel
-        "${{ steps.python.outputs.python-path }}" -u << "EOF"
+        pyexec="${{ steps.python.outputs.python-path }}"
+        pyexec="$pyexec//\\//"
+        "$pyexec" -u << "EOF"
         import os
         import shutil
         import sys
